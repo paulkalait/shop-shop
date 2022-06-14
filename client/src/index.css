@@ -2,7 +2,7 @@
   --primary: #232F3E;
   --secondary: #F3A847;
   --tertiary: #B12704;
-  --light: #fafafa;
+  /* --light: #fafafa; */
   --dark: #272f32;
   --error: rgb(228, 46, 1);
   --spacing-one: calc(1rem * 0.5);
@@ -17,6 +17,29 @@ html,
 body {
   min-height: 100%;
 }
+/* header styling */
+.header{
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  font-family: 'Pathway Gothic One', sans-serif;
+  font-size: 1.50rem;
+  border-bottom: 1px solid  rgb(228, 227, 227);
+}
+.header-logo{
+  font-family: 'Pathway Gothic One', sans-serif;
+  padding: 5px 5px;
+  color: black
+}
+.nav-items{
+  margin-top: 5%;
+  color: #272f32;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border-radius: 20px;
+  padding: 5px 5px ;
+}
+/* header styling  ends*/
+
 
 body {
   margin: 0;
