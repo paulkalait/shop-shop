@@ -32,7 +32,7 @@
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     background-color: white;
     border-radius: 20px;
-    color: #fff;
+    color: rgb(78, 78, 78);
     height: 100%;
     width: 100%;
     padding: 6px 10px;
@@ -45,14 +45,14 @@ font-size: xx-large;
 
 @media screen and (max-width: 768px) {
     .searchForm{
-        width: 85%;
+        width: 90%;
     }
 .searchInput{
 
     width: 100%;
 }
-.searchbar_container{
-
+.searchButton{
+    color: lightgray;
 }
 
 }

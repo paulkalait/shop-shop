@@ -4,13 +4,11 @@ import CategoryMenu from "../components/CategoryMenu";
 import SearchBar from "../components/SearchBar.js";
 
 const Home = () => {
-  const [currentCategory, setCategory] = useState("");
-
   return (
     <div className="container">
       <SearchBar />
-      <CategoryMenu setCategory={setCategory} />
-      <ProductList currentCategory={currentCategory} />
+      <CategoryMenu/>
+      <ProductList/>
     </div>
   );
 };
