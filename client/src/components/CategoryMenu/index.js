@@ -1,13 +1,14 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_CATEGORIES } from '../../utils/queries';
+import './style.css' 
 
 function CategoryMenu({ setCategory }) {
   const { data: categoryData } = useQuery(QUERY_CATEGORIES);
   const categories = categoryData?.categories || [];
 
   return (
-    <div>
+    <div className='categoryMenu'>
       <h2>Choose a Category:</h2>
       {categories.map((item) => (
         <button 

@@ -4,6 +4,7 @@ import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 import { ADD_USER } from '../utils/mutations';
 import LOGINPHOTO from '../assets/login-photo.svg'
+import { FaChevronLeft } from 'react-icons/fa'
 
 function Signup(props) {
   const [formState, setFormState] = useState({ email: '', password: '' });
@@ -38,12 +39,12 @@ function Signup(props) {
     
       
       <form onSubmit={handleFormSubmit} className="signup-form">
-      <Link to="/login">← Go to Login</Link>
-      <h2>Signup</h2>
+      <Link className='FaChevronLeft' to="/login"> <FaChevronLeft style={{marginTop: "2%"}}/> Login </Link>
+      <h2>Sign Up</h2>
         <div className="flex-row my-2 inputs">
           <label htmlFor="firstName"></label>
           <input
-            placeholder="First"
+            placeholder="First Name"
             name="firstName"
             type="firstName"
             id="firstName"
@@ -53,7 +54,7 @@ function Signup(props) {
         <div className="flex-row my-2 inputs">
           <label htmlFor="lastName"></label>
           <input
-            placeholder="Last"
+            placeholder="Last Name"
             name="lastName"
             type="lastName"
             id="lastName"
