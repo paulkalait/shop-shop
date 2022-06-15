@@ -20,8 +20,6 @@ function CategoryMenu() {
         categories: categoryData.categories
       })
     }
-
-
     //only rerun this useEffect if categoryData or dispatch changes
   }, [categoryData, dispatch])
 

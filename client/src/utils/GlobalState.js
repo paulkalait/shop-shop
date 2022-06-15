@@ -8,8 +8,10 @@ const { Provider } = StoreContext;
 const StoreProvider = ({ value = [], ...props}) => {
     const [state, dispatch ] = useProductReducer({
         products: [], 
+        cart: [],
         categories: [], 
         currentCatgory: '',
+        cartOpen: false
     })
     //use this to confirm it works 
     console.log(state)
@@ -17,6 +19,7 @@ const StoreProvider = ({ value = [], ...props}) => {
     return <Provider value={[state , dispatch]} {...props} />
 }
 
+//hook
 const useStoreContext = () => {
     return useContext(StoreContext)
 }
