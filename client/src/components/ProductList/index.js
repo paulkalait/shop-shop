@@ -5,6 +5,7 @@ import { UPDATE_PRODUCTS } from '../../utils/actions';
 import ProductItem from '../ProductItem';
 import { QUERY_PRODUCTS } from '../../utils/queries';
 import spinner from '../../assets/spinner.gif';
+import { idbPromise } from '../../utils/helpers'
 
 function ProductList() {
 const [ state, dispatch] =  useStoreContext()
@@ -13,13 +14,20 @@ const { currentCategory } = state
 const { loading, data } = useQuery(QUERY_PRODUCTS)
 
 useEffect(() => {
+  //if theres data to be stored from the query request
   if(data){
     dispatch({
+      //lets store it in the gloabl state object
       type: UPDATE_PRODUCTS,
       products: data.products
-    })
+    });
+
+    //but lets also take each product and save it to IndexDB using the helper function
+    data.products.forEach((product) => {
+      idbPromise('product', 'put', product)
+    }, )
   }
-}, [data, dispatch])
+}, [data, loading, dispatch])
 
 function filterProducts(){
   if(!currentCategory){
