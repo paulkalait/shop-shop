@@ -192,18 +192,47 @@ input {
   font-size: 1rem;
   padding: 0.60rem;
   width: 70%;
-  border: 1px solid lightgray;
   outline: none;
   transition: box-shadow 0.2s;
 }
 
-
-
-input:focus {
-  border: none;
-  box-shadow: 0 0 .25rem rgba(0, 0, 0, .5);
+.float-label {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.float-label .Active {
+  transform: translate(0, 12px) scale(0.75);
+  padding-bottom: 5px;
 }
 
+.float-label input{
+  height: 56px;
+  padding: 14px 16px 0 10px;
+  outline: 0;
+  border: 1px solid black;
+
+  background: #fff;
+  font-family: 'Pathway Gothic One', sans-serif;
+  font-size: 1.0rem;
+}
+
+
+.float-label label {
+  font-size: 1.0rem;
+  font-family: 'Pathway Gothic One', sans-serif;
+  padding: 0px 15px;
+  color: black;
+  pointer-events: none;
+  position: absolute;
+  transform: translate(0, 26px) scale(1);
+  transform-origin: top left;
+  transition: all 0.2s ease-out;
+}
+
+.float-label:focus-within label {
+  transform: translate(0, 12px) scale(0.75);
+}
 .container {
   width: 100%;
   max-width: 1200px;
