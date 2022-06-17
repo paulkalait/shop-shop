@@ -56,16 +56,20 @@ const resolvers = {
     checkout: async (parent, args, context) => {
       const order = new Order({ products: args.products });
       const line_items = [];
+      
       const { products } = await order.populate("products");
+
 
       //looping over the Order model's prices...
       for (let i = 0; i < products.length; i++) {
+        console.log("name", products[i].name)
         //generate products id
         const product = await stripe.products.create({
           name: products[i].name,
           description: products[i].description,
         });
 
+      
         // generate price id using the product id
         const price = await stripe.prices.create({
           product: product.id,
@@ -79,18 +83,16 @@ const resolvers = {
           price: price.id,
           quantity: 1,
         });
-
-        const session = await stripe.checkout.sessions.create({
-          payment_method_types: ["card"],
-          line_items,
-          mode: "payment",
-          succes_url:
-            "https://example.com/success?session_id={CHECKOUT_SESSION_ID}",
-          cancel_url: "https://example.com/cancel",
-        });
-
-        return { session: session.id };
       }
+      const session = await stripe.checkout.sessions.create({
+        payment_method_types: ["card"],
+        line_items,
+        mode: "payment",
+        succes_url: "https://example.com/success?session_id={CHECKOUT_SESSION_ID}",
+        cancel_url: "https://example.com/cancel",
+      });
+
+      return { session: session.id };
     },
   },
 
