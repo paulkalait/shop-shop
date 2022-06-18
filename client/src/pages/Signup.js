@@ -7,9 +7,14 @@ import LOGINPHOTO from '../assets/login-photo.svg'
 import { FaChevronLeft } from 'react-icons/fa'
 
 function Signup(props) {
-  const [isActive, setIsActive] = useState(false)
+  const [isActive, setIsActive] = useState({
+    firstName: false,
+    lastName: false,
+    email: false,
+    password: false
+  })
   const [value, setValue] = useState('')
-  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [formState, setFormState] = useState({ firstName: '', lastName: '', email: '', password: '' });
   const [addUser] = useMutation(ADD_USER);
 
   const handleFormSubmit = async (event) => {
@@ -26,13 +31,19 @@ function Signup(props) {
     Auth.login(token);
   };
 
-function handleTextChange(text) {
-  setValue(text);
+function handleTextChange(name, value) {
+  // setValue(text);
 
-  if (text !== '') {
-    setIsActive(true);
+  if (value !== '') {
+    setIsActive({
+      ...isActive,
+      [name]: true
+    });
   } else {
-    setIsActive(false);
+    setIsActive({
+      ...isActive,
+      [name]:false
+    });
   }
 }
 
@@ -42,7 +53,7 @@ function handleTextChange(text) {
       ...formState,
       [name]: value,
     });
-    handleTextChange()
+    handleTextChange(name, value)
 
   };
 
@@ -63,10 +74,10 @@ function handleTextChange(text) {
             name="firstName"
             type="firstName"
             id="firstName"
-            value={value}
+            value={formState.firstName}
             onChange={handleChange}
           />
-          <label htmlFor='firstname' className={ isActive ? 'Active' : ''}>
+          <label htmlFor='firstname' className={ isActive.firstName ? 'Active' : ''}>
           First Name</label>
         </div>
 
@@ -76,9 +87,10 @@ function handleTextChange(text) {
             name="lastName"
             type="lastName"
             id="lastName"
+            value={formState.lastName}
             onChange={handleChange}
           />
-          <label htmlFor='firstname' className={ isActive ? 'Active' : ''}>
+          <label htmlFor='lastName' className={ isActive.lastName ? 'Active' : ''}>
           Last Name</label>
         </div>
         <div className="flex-row my-2 float-label">
@@ -88,9 +100,10 @@ function handleTextChange(text) {
             name="email"
             type="email"
             id="email"
+            value={formState.email}
             onChange={handleChange}
           />
-          <label htmlFor='email' className={ isActive ? 'Active' : ''}>
+          <label htmlFor='email' className={ isActive.email ? 'Active' : ''}>
           youremail@gmail.com</label>
         </div>
         <div className="flex-row my-2 float-label">
@@ -99,9 +112,10 @@ function handleTextChange(text) {
             name="password"
             type="password"
             id="pwd"
+            value={formState.password}
             onChange={handleChange}
           />
-          <label htmlFor='pwd' className={ isActive ? 'Active' : ''}>
+          <label htmlFor='pwd' className={ isActive.password ? 'Active' : ''}>
           Password</label>
         </div>
         <div className="flex-row my-2 inputs">
