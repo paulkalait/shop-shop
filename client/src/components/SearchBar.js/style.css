@@ -36,12 +36,16 @@
     height: 100%;
     width: 100%;
     padding: 6px 10px;
-    
   }
-.searchButton{
+  
+.searchButton, .search-x{
 background-color: transparent;
-font-size: xx-large;
+font-size: x-large;
+color: rgb(78, 78, 78);
 }
+
+
+
 
 @media screen and (max-width: 768px) {
     .searchForm{
